@@ -1,0 +1,1 @@
+export const GET_ALL_DISCUSS = "GET_ALL_DISCUSS";

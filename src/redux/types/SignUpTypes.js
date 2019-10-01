@@ -1,0 +1,1 @@
+export const SET_INFO_SIGN_UP = "SET_INFO_SIGN_UP";
