@@ -4,8 +4,10 @@ import { BaseScreen } from '../base';
 import { QuestionButton } from '../../components/question';
 import { DiscussHeader } from '../../components/discuss';
 import UserIcon from '../../assets/icons/user_64.png';
+import { connect } from 'react-redux';
+import * as actions from '../../redux/actions/DiscussActions';
 
-export default class DiscussQuestionScreen extends Component {
+class DiscussQuestionScreen extends Component {
 
     constructor(props) {
         super(props);
@@ -32,7 +34,23 @@ export default class DiscussQuestionScreen extends Component {
     }
 
     _onSubmitQuestion = () => {
+        const { title, content } = this.state;
 
+        let date = new Date();
+        let datetime = date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
+
+        const discuss = {
+            "id": "1",
+            "title":  title,
+            "content": content,
+            "fullname": "John",
+            "avatar": "",
+            "datetime": datetime,
+            "views": "0",
+            "comments": []
+        }
+        this.props.postDiscussQuestion(discuss);
+        this.props.navigation.navigate('DiscussScreen');
     }
 
     render() {
@@ -79,6 +97,16 @@ export default class DiscussQuestionScreen extends Component {
         )
     }
 }
+
+function mapDispatch(dispatch) {
+    return {
+        postDiscussQuestion(discuss) {
+            dispatch(actions.postDiscussQuestion(discuss))
+        }
+    }
+}
+
+export default connect(null, mapDispatch)(DiscussQuestionScreen);
 
 const styles = StyleSheet.create({
     wrapperStyle: {

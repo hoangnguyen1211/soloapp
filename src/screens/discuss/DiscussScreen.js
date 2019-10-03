@@ -16,9 +16,9 @@ class DiscussScreen extends Component {
         this.props.getAllDiscuss();
     }
 
-    _onGoToDiscussDtailsScreen = (discuss) => {
+    _onGoToDiscussDtailsScreen = (index) => {
         this.props.navigation.navigate('DiscussDetailsScreen', {
-            discuss
+            index
         })
     }
 
@@ -40,6 +40,7 @@ class DiscussScreen extends Component {
                         renderItem={ ({item, index}) => 
                             <DiscussItem 
                                 discuss={item}
+                                index={index}
                                 funcHandler={this._onGoToDiscussDtailsScreen}
                              /> 
                         }

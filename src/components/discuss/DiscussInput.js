@@ -1,15 +1,28 @@
 import React, { Component } from 'react';
-import { View, TextInput, StyleSheet } from 'react-native';
+import { View, TextInput, StyleSheet, Alert } from 'react-native';
 import { Icon } from 'react-native-elements';
-import { COLOR_GRAY, COLOR_WHITE, COLOR_ORANGE } from '../../constants/ColorConstants';
+import { COLOR_WHITE, COLOR_ORANGE } from '../../constants/ColorConstants';
 
 export default class DiscussInput extends Component {
 
-    constructor(props){
+    constructor(props) {
         super(props);
         this.state = {
             content: '',
-            height:  50
+            height: 50
+        }
+    }
+
+    _onSubmitComment = () => {
+        const { content } = this.state;
+        if (content.length === 0) {
+            Alert.alert('Vui lòng nhập nội dung!');
+        }
+        else {
+            this.setState({
+                content: ''
+            });
+            this.props.onSubmitComment(content);
         }
     }
 
@@ -19,10 +32,10 @@ export default class DiscussInput extends Component {
             <View style={styles.containerStyle}>
                 <TextInput
                     onChangeText={(text) => this.setState({ content: text })}
-                    value={this.state.title}
+                    value={this.state.content}
                     multiline={true}
                     placeholder="Nhập câu trả lời"
-                    style={[ styles.inputStyle, { height: Math.max( 35, height ) }]}
+                    style={[styles.inputStyle, { height: Math.max(35, height) }]}
                     onContentSizeChange={(event) => {
                         this.setState({ height: event.nativeEvent.contentSize.height });
                     }}
@@ -32,7 +45,7 @@ export default class DiscussInput extends Component {
                         name='paper-plane'
                         type='font-awesome'
                         color={COLOR_ORANGE}
-                        onPress={() => console.log('hello')} />
+                        onPress={() => this._onSubmitComment()} />
                 </View>
             </View>
         )

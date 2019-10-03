@@ -6,27 +6,42 @@ import { FONT_SM, FONT_MD } from '../../constants/FontConstants';
 import { COLOR_GRAY } from '../../constants/ColorConstants';
 import { Icon } from 'react-native-elements';
 import UserIcon from '../../assets/icons/user_64.png';
+import { connect } from 'react-redux';
+import * as actions from '../../redux/actions/DiscussActions';
 
 const { width, height } = Dimensions.get('window');
-export default class DiscussDetailsScreen extends Component {
+class DiscussDetailsScreen extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {
-            discuss: {},
-            content: '',
-            height: 50
-        }
     }
 
     componentDidMount = () => {
-        this.setState({
-            discuss: this.props.navigation.getParam('discuss')
-        })
+        const index = this.props.navigation.getParam('index');
+        this.props.getDiscussByIndex(index);
     }
 
     _onGoBackScreen = () => {
         this.props.navigation.goBack();
+    }
+
+    _onSubmitComment = (content) => {
+
+        const { discuss, postDiscussComment } = this.props;
+
+        let date = new Date();
+        let datetime = date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
+
+        discuss.comments.push({
+            "id": "1",
+            "fullname": "Rosicky",
+            "avatar": "",
+            "content": content,
+            "datetime": datetime,
+            "votes": "0"
+        });
+
+        postDiscussComment(discuss);
     }
 
     _renderInfoItem = (iconName, text) => {
@@ -59,7 +74,8 @@ export default class DiscussDetailsScreen extends Component {
     }
 
     render() {
-        const { discuss } = this.state;
+        const { discuss } = this.props;
+
         return (
             <BaseScreen nopadding>
                 <View style={styles.wrapperStyle}>
@@ -87,11 +103,34 @@ export default class DiscussDetailsScreen extends Component {
                         keyExtractor={(item, index) => index.toString()}
                     />
                 </View>
-                <DiscussInput />
+                <DiscussInput 
+                    onSubmitComment={this._onSubmitComment}
+                />
             </BaseScreen>
         )
     }
 }
+
+function mapState(state) {
+    console.log(state.discussReducer.discuss);
+    
+    return { 
+        discuss: state.discussReducer.discuss
+    }
+}
+
+function mapDispatch(dispatch) {
+    return {
+        getDiscussByIndex(index){
+            dispatch(actions.getDiscussByIndex(index));
+        },
+        postDiscussComment(discuss) {
+            dispatch(actions.postDiscussComment(discuss));
+        }
+    }
+}
+
+export default connect(mapState, mapDispatch)(DiscussDetailsScreen);
 
 const styles = StyleSheet.create({
     wrapperStyle: {

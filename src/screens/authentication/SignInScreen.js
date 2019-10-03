@@ -27,7 +27,7 @@ export default class SignInScreen extends Component {
 
     render() {
         return (
-            <BaseScreen style={styles.containerStyle}>
+            <BaseScreen nopadding>
                 <ImageBackgroundTop />
                 <View style={styles.wapperStyle}>
                     <View>
@@ -67,9 +67,6 @@ export default class SignInScreen extends Component {
 }
 
 const styles = StyleSheet.create({
-    containerStyle: {
-        paddingHorizontal: 0
-    },
     wapperStyle: {
         paddingHorizontal: 20
     },

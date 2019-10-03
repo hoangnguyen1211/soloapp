@@ -1,15 +1,15 @@
 import React from 'react';
 import { View, Text, StyleSheet, Dimensions, Image, TouchableOpacity } from 'react-native';
 import { TextForm } from '../form';
-import { FONT_XS, FONT_SM, FONT_MD } from '../../constants/FontConstants';
-import { COLOR_GRAY, COLOR_SKY } from '../../constants/ColorConstants';
+import { FONT_SM } from '../../constants/FontConstants';
+import { COLOR_GRAY } from '../../constants/ColorConstants';
 import { Icon } from 'react-native-elements';
 import UserIcon from '../../assets/icons/user_64.png';
 
 const { width } = Dimensions.get('window');
 export default function DiscussItem(props) {
-    const { discuss, content, avatar, funcHandler } = props;
-
+    const { discuss, index, content, avatar, funcHandler } = props;
+    
     const _renderInfoItem = (iconName, text) => {
         return <View style={styles.infoItemStyle}>
             <Icon
@@ -31,7 +31,7 @@ export default function DiscussItem(props) {
                 />
             </View>
             <TouchableOpacity style={styles.wrapperStyle}
-                onPress={() => !content ? funcHandler(discuss) : _ => _}
+                onPress={() => !content ? funcHandler(index) : _ => _}
             >
                 <TextForm style={styles.nameStyle}>{discuss.fullname}</TextForm>
                 <TextForm style={styles.titleStyle}>{discuss.title}</TextForm>
