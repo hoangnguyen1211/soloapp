@@ -3,60 +3,10 @@ import { View, StyleSheet, ScrollView } from 'react-native';
 import { TextForm, TextLink } from '../form';
 import CategoryCourseItem from './CategoryCourseItem';
 import { COURSE_SCREEN, LESSON_SCREEN } from '../../constants/NavigatorConstants';
-import { FONT_XS, FONT_MD } from '../../constants/FontConstants';
+import { FONT_XS, FONT_SM } from '../../constants/FontConstants';
 import { COLOR_ORANGE } from '../../constants/ColorConstants';
 
-
 export default class CategoryItem extends PureComponent {
-
-    constructor(props) {
-        super(props);
-        this.state = {
-            courses: []
-        }
-    }
-
-    componentDidMount = () => {
-        this.setState({
-            courses: [
-                {
-                    "id": "1",
-                    "name": "Html",
-                    "isActive": "true",
-                    "image": "https://freeiconshop.com/wp-content/uploads/edd/html-flat.png",
-                    "topicId": "1"
-                },
-                {
-                    "id": "2",
-                    "name": "Css",
-                    "isActive": "false",
-                    "image": "https://dh42.com/wp-content/uploads/2014/01/1464234885_css.png",
-                    "topicId": "1"
-                },
-                {
-                    "id": "3",
-                    "name": "Javascript",
-                    "isActive": "false",
-                    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-IG9LRECaSHCx1yrg74Oy6_QWHmYqnQMwY_Vcb25cYd1Ie_YEOA",
-                    "topicId": "1"
-                },
-                {
-                    "id": "4",
-                    "name": "Bootstrap",
-                    "isActive": "false",
-                    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-OQIVetwzcD611FUAA60n0zu6vki9iJKxMsCcSu_pvhSxQC0VkA",
-                    "topicId": "1"
-                },
-                {
-                    "id": "5",
-                    "name": "Sass",
-                    "isActive": "false",
-                    "image": "https://cdn.shopify.com/s/files/1/0154/2777/products/sass-detail-04_1024x1024.jpg?v=1501879919",
-                    "topicId": "1"
-                }
-            ]
-        })
-    }
 
     _onGoToCourseScreen = (courseId) => {
         const { navigation } = this.props;
@@ -70,7 +20,6 @@ export default class CategoryItem extends PureComponent {
 
     render() {
         const { category, index } = this.props;
-        const { courses } = this.state;
         return (
             <View style={styles.containerStyle}>
                 <View style={styles.titleBoxStyle}>
@@ -83,7 +32,7 @@ export default class CategoryItem extends PureComponent {
                 </View>
                 <ScrollView horizontal={true} style={styles.wrapperStyle}>
                     {
-                        courses.map((item, index) => {
+                        category.courses.map((item, index) => {
                             return <CategoryCourseItem
                                 key={index}
                                 course={item}
@@ -100,12 +49,21 @@ export default class CategoryItem extends PureComponent {
 const styles = StyleSheet.create({
     containerStyle: {
         flex: 1,
-        marginBottom: 10
+        marginBottom: 10,
+        paddingTop: 10,
+        paddingHorizontal: 5,
+        backgroundColor: '#fff',
+        borderColor: '#dadada',
+        shadowColor: "#333",
+        shadowOpacity: 0.2,
+        shadowOffset: {
+            width: 1,
+            height: 1
+        }
     },
     wrapperStyle: {
         flexDirection: 'row',
-        flexWrap: 'nowrap',
-        paddingVertical: 10
+        flexWrap: 'nowrap'
     },
     titleBoxStyle: {
         flexDirection: 'row',
@@ -115,7 +73,7 @@ const styles = StyleSheet.create({
     },
     titleStyle: {
         fontWeight: '600',
-        fontSize: FONT_MD
+        fontSize: FONT_SM
     },
     textLinkStyle: {
         fontSize: FONT_XS,

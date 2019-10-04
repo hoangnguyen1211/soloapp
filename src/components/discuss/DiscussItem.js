@@ -10,20 +10,23 @@ const { width } = Dimensions.get('window');
 export default function DiscussItem(props) {
     const { discuss, index, content, avatar, funcHandler } = props;
     
-    const _renderInfoItem = (iconName, text) => {
+    const _renderInfoItem = (iconName, size, text) => {
         return <View style={styles.infoItemStyle}>
             <Icon
                 name={iconName}
                 type='ionicon'
                 color='#517fa4'
-                size={12}
+                size={size}
             />
             <Text style={styles.infoItemTextStyle}>{text}</Text>
         </View>
     }
 
     return (
-        <View style={styles.containerStyle}>
+        <View style={[ 
+                styles.containerStyle, 
+                { backgroundColor: index % 2 === 0 ? '#fff' : '#f2f2f2' } 
+            ]}>
             <View style={styles.avatarBoxStyle}>
                 <Image
                     style={styles.imageStyle}
@@ -36,8 +39,8 @@ export default function DiscussItem(props) {
                 <TextForm style={styles.nameStyle}>{discuss.fullname}</TextForm>
                 <TextForm style={styles.titleStyle}>{discuss.title}</TextForm>
                 <View style={styles.infoStyle}>
-                    {_renderInfoItem('ios-list-box', discuss.datetime)}
-                    {_renderInfoItem('ios-eye', discuss.views)}
+                    {_renderInfoItem('ios-list-box', 12, discuss.datetime)}
+                    {_renderInfoItem('ios-chatboxes', 15, discuss.comments.length)}
                 </View>
             </TouchableOpacity>
         </View>
@@ -49,8 +52,7 @@ const styles = StyleSheet.create({
     containerStyle: {
         flex: 1,
         flexDirection: 'row',
-        paddingBottom: 15,
-        marginBottom: 15,
+        padding: 10,
         borderBottomColor: "#f2f2f2",
         borderBottomWidth: 1
     },
@@ -74,13 +76,13 @@ const styles = StyleSheet.create({
     nameStyle: {
         fontWeight: '600',
         color: '#000',
-        fontSize: FONT_SM,
-        paddingBottom: 5
+        fontSize: FONT_SM
     },
     titleStyle: {
         color: COLOR_GRAY,
         fontSize: FONT_SM,
-        paddingBottom: 5
+        paddingBottom: 5,
+        fontWeight: '600'
     },
     infoStyle: {
         flexDirection: 'row',

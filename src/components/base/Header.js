@@ -1,21 +1,22 @@
 import React, { useState } from 'react';
-import { View, StyleSheet, Dimensions, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, Dimensions, TouchableOpacity } from 'react-native';
 import { TextForm, InputForm } from '../form';
 import { HorizontalGradient } from '../gradient';
-import { COLOR_WHITE } from '../../constants/ColorConstants';
+import { COLOR_WHITE, COLOR_SKY } from '../../constants/ColorConstants';
 import { Icon } from 'react-native-elements';
 
-const { width, height } = Dimensions.get('window');
 export default Header = (props) => {
 
     const [searchToggle, setSearchToggle] = useState(false);
-
-    const { funcGoBack, title } = props;
+    const { funcGoBack, title, navigation } = props;
 
     const _leftComponent = () => {
-        if(!funcGoBack) return <View style={styles.leftComponentStyle}></View>
-        return <View>
-            <TouchableOpacity onPress={() => funcGoBack()}>
+        return <View style={[ 
+                styles.leftComponentStyle
+            ]}>
+            <TouchableOpacity 
+                style={{ display: funcGoBack ? 'flex' : 'none' }}
+                onPress={() => funcGoBack()}>
                 <Icon
                     type='font-awesome'
                     name='arrow-left'
@@ -36,20 +37,22 @@ export default Header = (props) => {
 
     const _rightComponent = () => {
         return <View style={styles.rightComponentStyle}>
+            <Text style={styles.badeStyle}>10</Text>
             <TouchableOpacity onPress={() => _onToggleSearchBar()}>
                 <Icon
                     type='font-awesome'
                     name='search'
                     color={COLOR_WHITE}
                     size={17}
-                    containerStyle={{ marginRight: 15 }}
+                    containerStyle={{ marginRight: 10 }}
                 />
             </TouchableOpacity>
             <Icon
-                type='font-awesome'
-                name='bell'
+                type='ionicon'
+                name='ios-notifications-outline'
                 color={COLOR_WHITE}
-                size={17}
+                size={23}
+                onPress={() => navigation.navigate('NotifyScreen')}
             />
         </View>
     }
@@ -94,7 +97,7 @@ export default Header = (props) => {
 const styles = StyleSheet.create({
     containerStyle: {
         paddingTop: 50,
-        paddingHorizontal: 20,
+        paddingHorizontal: 10,
         justifyContent: 'flex-end'
     },
     wrapperStyle: {
@@ -103,12 +106,43 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         paddingBottom: 10
     },
-    rightComponentStyle: {
+    leftComponentStyle: {
+        flex: 1,
         flexDirection: 'row',
-        alignItems: 'center'
+        justifyContent: 'flex-start'
+    },
+    centerComponentStyle: {
+        flex: 1
+    },
+    titleStyle: {
+        textAlign: 'center',
+        fontWeight: '600',
+        color: COLOR_WHITE
+    },
+    rightComponentStyle: {
+        flex: 1,
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'flex-end',
+        position: 'relative'
+    },
+    badeStyle: {
+        width: 16,
+        height: 16,
+        borderRadius: 8,
+        fontSize: 9,
+        color: '#fff',
+        fontWeight: '600',
+        backgroundColor: COLOR_SKY,
+        lineHeight: 15,
+        textAlign: 'center',
+        position: 'absolute',
+        right: 5,
+        top: -5,
+        zIndex: 200
     },
     searchComponentStyle: {
-        paddingHorizontal: 20
+        paddingHorizontal: 10
     },
     searchWrapperStyle: {
         position: 'relative'
@@ -122,9 +156,5 @@ const styles = StyleSheet.create({
     searchInputStyle: {
         paddingLeft: 35,
         height: 35
-    },
-    titleStyle: {
-        fontWeight: '600',
-        color: COLOR_WHITE
     }
 })

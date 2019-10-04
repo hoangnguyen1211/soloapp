@@ -4,9 +4,12 @@ import UserIcon from '../../assets/icons/user_64.png';
 
 const { width } = Dimensions.get('window');
 export default function DiscussAnswer(props) {
-    const { comment } = props;
+    const { comment, index } = props;
     return (
-        <View style={styles.containerStyle}>
+        <View style={[ 
+                styles.containerStyle,  
+                { backgroundColor: index % 2 === 0 ? '#fff' : '#f2f2f2'}
+            ]}>
             <View style={styles.wrapperStyle}>
                 <Text>{comment.content}</Text>
                 <View style={styles.infoCommentStyle}>
@@ -26,7 +29,6 @@ export default function DiscussAnswer(props) {
 
 const styles = StyleSheet.create({
     containerStyle: {
-        marginBottom: 10,
         borderColor: '#f2f2f2',
         borderBottomWidth: 1
     },
@@ -43,7 +45,7 @@ const styles = StyleSheet.create({
     infoCommentStyle: {
         flexDirection: 'row',
         justifyContent: 'flex-end',
-        marginTop: 10
+        marginTop: 5
     },
     fullnameStyle: {
         fontSize: 11,

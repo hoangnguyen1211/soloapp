@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { StyleSheet } from 'react-native';
 import { TextForm, TitleForm } from '../../components/form';
 import { VerticalGradient } from '../../components/gradient';
-import { LANGUAGE_SCREEN } from '../../constants/NavigatorConstants';
+import { SIGN_IN_SCREEN } from '../../constants/NavigatorConstants';
 import { COLOR_WHITE } from '../../constants/ColorConstants';
 
 export default class SplashScreen extends Component {
@@ -21,7 +21,7 @@ export default class SplashScreen extends Component {
         const data = await this.performTimeConsumingTask();
 
         if (data !== null) {
-            this.props.navigation.navigate(LANGUAGE_SCREEN);
+            this.props.navigation.navigate(SIGN_IN_SCREEN);
         }
     }
 

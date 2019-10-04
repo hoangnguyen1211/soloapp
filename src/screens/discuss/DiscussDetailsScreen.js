@@ -40,8 +40,10 @@ class DiscussDetailsScreen extends Component {
             "datetime": datetime,
             "votes": "0"
         });
-
         postDiscussComment(discuss);
+        setTimeout(() => {
+            this.ListView_Ref.scrollToEnd({ animated: true });
+        }, 200);
     }
 
     _renderInfoItem = (iconName, text) => {
@@ -98,12 +100,16 @@ class DiscussDetailsScreen extends Component {
                         renderItem={({ item, index }) =>
                             <DiscussComment
                                 comment={item}
+                                index={index}
                             />
                         }
                         keyExtractor={(item, index) => index.toString()}
+                        ref={(ref) => {
+                            this.ListView_Ref = ref;
+                        }}
                     />
                 </View>
-                <DiscussInput 
+                <DiscussInput
                     onSubmitComment={this._onSubmitComment}
                 />
             </BaseScreen>
@@ -112,16 +118,14 @@ class DiscussDetailsScreen extends Component {
 }
 
 function mapState(state) {
-    console.log(state.discussReducer.discuss);
-    
-    return { 
+    return {
         discuss: state.discussReducer.discuss
     }
 }
 
 function mapDispatch(dispatch) {
     return {
-        getDiscussByIndex(index){
+        getDiscussByIndex(index) {
             dispatch(actions.getDiscussByIndex(index));
         },
         postDiscussComment(discuss) {
@@ -182,7 +186,7 @@ const styles = StyleSheet.create({
     },
     answerHeaderStyle: {
         padding: 15,
-        backgroundColor: '#f2f2f2',
+        backgroundColor: '#ddd',
         textTransform: 'uppercase'
     },
     infoStyle: {

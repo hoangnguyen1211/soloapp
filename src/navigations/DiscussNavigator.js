@@ -1,5 +1,9 @@
 import { createStackNavigator } from 'react-navigation-stack';
-import { DiscussScreen, DiscussDetailsScreen , DiscussQuestionScreen } from '../screens/discuss';
+import { 
+    DiscussScreen, 
+    DiscussDetailsScreen , 
+    DiscussQuestionScreen,
+} from '../screens/discuss';
 const DiscussNavigator = createStackNavigator({
     DiscussScreen,
     DiscussDetailsScreen,

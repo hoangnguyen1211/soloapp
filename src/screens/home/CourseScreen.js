@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, FlatList, ScrollView } from 'react-native';
+import { View, StyleSheet, Image, Dimensions, FlatList, ScrollView } from 'react-native';
 import { BaseScreen } from '../base';
 import { Header } from '../../components/base';
 import { CourseItem, LearnHeader } from '../../components/learning';
@@ -7,6 +7,7 @@ import { HOME_SCREEN, LESSON_SCREEN } from '../../constants/NavigatorConstants';
 import { connect } from 'react-redux';
 import * as actions from '../../redux/actions/CourseActions';
 
+const { width } = Dimensions.get('window');
 class CourseScreen extends Component {
 
     constructor(props) {
@@ -41,10 +42,15 @@ class CourseScreen extends Component {
 
     render() {
         const { courses } = this.state;
-        const title = this.props.navigation.getParam('title');
+        const { navigation } = this.props;
+        const title = navigation.getParam('title');
+        const image = navigation.getParam('image');
         return (
             <BaseScreen nopadding >
-                <Header funcGoBack={this._onGoBackHome} />
+                <Header
+                    funcGoBack={this._onGoBackHome}
+                    navigation={navigation}
+                />
                 <LearnHeader title={title} text={`${courses.length} khoá học`} />
                 <ScrollView>
                     <View style={styles.wrapper}>

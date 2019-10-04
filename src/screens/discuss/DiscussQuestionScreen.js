@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, TextInput, StyleSheet, Image } from 'react-native';
+import { View, Text, TextInput, StyleSheet, Image, Alert } from 'react-native';
 import { BaseScreen } from '../base';
 import { QuestionButton } from '../../components/question';
 import { DiscussHeader } from '../../components/discuss';
@@ -36,21 +36,29 @@ class DiscussQuestionScreen extends Component {
     _onSubmitQuestion = () => {
         const { title, content } = this.state;
 
-        let date = new Date();
-        let datetime = date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
-
-        const discuss = {
-            "id": "1",
-            "title":  title,
-            "content": content,
-            "fullname": "John",
-            "avatar": "",
-            "datetime": datetime,
-            "views": "0",
-            "comments": []
+        if (title.length === 0) {
+            Alert.alert("Vui lòng nhập tiêu đề!");
         }
-        this.props.postDiscussQuestion(discuss);
-        this.props.navigation.navigate('DiscussScreen');
+        else if (content.length === 0) {
+            Alert.alert("Vui lòng nhập nội dung!")
+        }
+        else {
+            let date = new Date();
+            let datetime = date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
+
+            const discuss = {
+                "id": "1",
+                "title": title,
+                "content": content,
+                "fullname": "John",
+                "avatar": "",
+                "datetime": datetime,
+                "views": "0",
+                "comments": []
+            }
+            this.props.postDiscussQuestion(discuss);
+            this.props.navigation.navigate('DiscussScreen');
+        }
     }
 
     render() {
@@ -90,8 +98,8 @@ class DiscussQuestionScreen extends Component {
                 </View>
                 <QuestionButton
                     name="paper-plane"
-                    style={ styles.buttonSubmitStyle }
-                    funcHandler={ this._onSubmitQuestion }
+                    style={styles.buttonSubmitStyle}
+                    funcHandler={this._onSubmitQuestion}
                 />
             </BaseScreen>
         )

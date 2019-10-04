@@ -77,8 +77,6 @@ export default connect(mapState, mapDispatch)(DiscussScreen);
 const styles = StyleSheet.create({
     wrapper: {
         justifyContent: 'center',
-        alignItems: 'stretch',
-        paddingHorizontal: 10,
-        paddingVertical: 20
+        alignItems: 'stretch'
     }
 })

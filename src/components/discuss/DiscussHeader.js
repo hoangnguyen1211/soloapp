@@ -71,7 +71,7 @@ export default DiscussHeader = (props) => {
 const styles = StyleSheet.create({
     containerStyle: {
         paddingTop: 50,
-        paddingHorizontal: 20,
+        paddingHorizontal: 10,
         justifyContent: 'flex-end'
     },
     wrapperStyle: {

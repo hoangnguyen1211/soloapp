@@ -109,7 +109,10 @@ class LessonScreen extends Component {
         const title = navigation.getParam('title');
         return (
             <BaseScreen nopadding >
-                <Header funcGoBack={this._onGoBackCourseScreen} />
+                <Header 
+                    funcGoBack={this._onGoBackCourseScreen}
+                    navigation={navigation}
+                />
                 <LearnHeader title={ title } text={`${ lessons.length } bài học | ${ totalQuestion } bài tập`} />
                 <View style={styles.wrapper}>
                     <View style={styles.switchIconBoxStyle}>

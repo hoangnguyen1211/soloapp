@@ -4,6 +4,7 @@ export const LEARNING_NAVIGATOR = "LearningNavigator";
 export const HOME_NAVIGATOR = "HomeNavigator";
 export const DISCUSS_NAVIGATOR = "DiscussNavigator";
 export const SETTING_NAVIGATOR = "SettingNavigator";
+export const NOTIFY_NAVIGATOR = "NotifyNavigator";
 
 // ---====  START UP =====----
 export const SPLASH_SCREEN = "SplashScreen";
