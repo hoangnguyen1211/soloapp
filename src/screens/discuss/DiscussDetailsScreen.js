@@ -82,7 +82,7 @@ class DiscussDetailsScreen extends Component {
             <BaseScreen nopadding>
                 <View style={styles.wrapperStyle}>
                     <DiscussHeader
-                        title="Thảo luận"
+                        title="Bình luận"
                         funcGoBack={this._onGoBackScreen}
                     />
                     <View style={styles.questionWrapperStyle}>

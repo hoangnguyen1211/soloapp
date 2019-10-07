@@ -40,3 +40,6 @@ export const QUIZ_MULTI_SCREEN = 'QuizMultiScreen';
 export const QUIZ_DRAG_SORT_SCREEN = 'QuizDragSortScreen';
 export const QUIZ_ENTER_SCREEN = 'QuizEnterScreen';
 export const QUIZ_SCREEN = 'QuizScreen';
+
+// ---==== ENGLISH ====---
+export const ENGLISH_SCREEN = "EnglishScreen";

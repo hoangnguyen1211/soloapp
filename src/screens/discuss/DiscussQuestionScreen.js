@@ -65,7 +65,7 @@ class DiscussQuestionScreen extends Component {
         return (
             <BaseScreen nopadding>
                 <DiscussHeader
-                    title="Thảo luận"
+                    title="Đặt câu hỏi"
                     funcGoBack={this._onGoBackScreen}
                 />
                 <View style={styles.wrapperStyle}>

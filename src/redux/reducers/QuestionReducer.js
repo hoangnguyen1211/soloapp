@@ -1,5 +1,4 @@
 import * as types from '../types/QuestionTypes';
-import { randomArrayFunc } from '../../util/FunctionUtil';
 
 let questions = [];
 let quizzes = [];

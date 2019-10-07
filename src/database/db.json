@@ -3,36 +3,42 @@
         {
             "id": "1",
             "name": "Frontend",
+            "type": "frontend",
             "icon": "https://www.trzcacak.rs/myfile/full/64-649085_web-design-png-transparent-website-design-development.png",
             "image": "https://i.imgur.com/bDgELee.png"
         },
         {
             "id": "2",
             "name": "Backend",
+            "type": "backend",
             "icon": "https://www.trzcacak.rs/myfile/full/150-1503141_web-development-services-transparent-web-development-png.png",
             "image": "https://i.imgur.com/gME5Tjn.png"
         },
         {
             "id": "3",
             "name": "Mobile",
+            "type": "mobile",
             "icon": "https://www.trzcacak.rs/myfile/full/200-2001053_mobile-application-development-mobile-app-development.png",
             "image": "https://i.imgur.com/VsPmH1K.png"
         },
         {
             "id": "4",
             "name": "English for IT",
+            "type": "english",
             "icon": "https://www.trzcacak.rs/myfile/full/77-770812_ms-chies-english-classes-class-dojo.png",
             "image": "https://i.imgur.com/5NSGxjs.png"
         },
         {
             "id": "5",
             "name": "Thuật toán",
+            "type": "algorithm",
             "icon": "https://www.trzcacak.rs/myfile/full/6-68703_portal-digital-idea-inovao-disruptiva.png",
             "image": "https://i.imgur.com/OMwlN7x.png"
         },
         {
             "id": "6",
             "name": "Phỏng vấn",
+            "type": "interview",
             "icon": "https://www.trzcacak.rs/myfile/full/444-4443432_job-interview-in-cartoon.png",
             "image": "https://i.imgur.com/7CBZZDP.png"
         }
@@ -286,7 +292,7 @@
         {
             "id": "1",
             "content": "<p><strong>HTML</strong> stands for Hyper Text Markup Language. It is used to design web pages using markup language. HTML is the combination of Hypertext and Markup language. Hypertext defines the link between the web pages. Markup language is used to define the text document within tag which defines the structure of web pages. This language is used to annotate (make notes for the computer) text so that a machine can understand it and manipulate text accordingly. Most of markup (e.g. HTML) languages are human readable. Language uses tags to define what manipulation has to be done on the text.<br>HTML is a markup language which is used by the browser to manipulate text, images and other content to display it in required format. HTML was created by Tim Berners-Lee in 1991. The first ever version of HTML was HTML 1.0 but the first standard version was HTML 2.0 which was published in 1999.</p>",
-            "image": "",
+            "image": "https://i.imgur.com/MZVzckI.png",
             "video": "",
             "type": "radio",
             "lessonId": "1",
@@ -371,7 +377,7 @@
         {
             "id": "2",
             "content": "<p><strong>HTML</strong> stands for Hyper Text Markup Language. It is used to design web pages using markup language. HTML is the combination of Hypertext and Markup language. Hypertext defines the link between the web pages. Markup language is used to define the text document within tag which defines the structure of web pages. This language is used to annotate (make notes for the computer) text so that a machine can understand it and manipulate text accordingly. Most of markup (e.g. HTML) languages are human readable. Language uses tags to define what manipulation has to be done on the text.<br>HTML is a markup language which is used by the browser to manipulate text, images and other content to display it in required format. HTML was created by Tim Berners-Lee in 1991. The first ever version of HTML was HTML 1.0 but the first standard version was HTML 2.0 which was published in 1999.</p>",
-            "image": "",
+            "image": "https://i.imgur.com/VQzG71v.png",
             "video": "",
             "type": "checkbox",
             "lessonId": "1",

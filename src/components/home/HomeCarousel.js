@@ -54,7 +54,7 @@ export default class HomeCarousel extends Component {
                 renderItem={this._renderItem}
                 hasParallaxImages={true}
                 loop={true}
-                autoplay={true}
+                autoplay={false}
             />
         );
     }

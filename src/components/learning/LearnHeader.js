@@ -1,10 +1,9 @@
 import React from 'react';
 import { View, Image, Dimensions, StyleSheet } from 'react-native';
 import { TextForm } from '../form';
-import { VerticalGradient, HorizontalGradient } from '../gradient';
+import { HorizontalGradient } from '../gradient';
 import { COLOR_WHITE } from '../../constants/ColorConstants';
 import { FONT_XL } from '../../constants/FontConstants';
-import ReactIcon from '../../assets/icons/iconfinder.png';
 
 const { width } = Dimensions.get('window');
 export default function LearnHeader(props) {
@@ -45,7 +44,6 @@ const styles = StyleSheet.create({
         height: width / 3
     },
     imageStyle: {
-        // width: width / 3,
         width: '100%',
         height: '100%'
     },

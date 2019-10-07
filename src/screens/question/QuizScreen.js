@@ -1,5 +1,5 @@
 import React, { Component, createRef } from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, Image, Dimensions } from 'react-native';
 import { BaseScreen } from '../base';
 import {
     QuestionHeader,
@@ -16,6 +16,7 @@ import { connect } from 'react-redux';
 import * as actions from '../../redux/actions/QuestionActions';
 import * as userInfoService from '../../services/UserInfoService';
 
+const { width } = Dimensions.get('window');
 class QuizScreen extends Component {
     constructor(props) {
         super(props);
@@ -120,6 +121,13 @@ class QuizScreen extends Component {
                     total={question.totalQuestion}
                     title={ question.title }
                 />
+                <View style={styles.imageBoxStyle}>
+                    <Image 
+                        source={{ uri: "https://i.imgur.com/gME5Tjn.png" }}
+                        resizeMode="contain"
+                        style={styles.imageStyle}
+                    />
+                </View>
                 <View style={styles.wrapperStyle}>
                     {this._renderAnswerList(question.type, question.answers, question.quiz)}
                 </View>
@@ -162,5 +170,17 @@ export default connect(mapState, mapDispatch)(QuizScreen);
 const styles = StyleSheet.create({
     wrapperStyle: {
         paddingHorizontal: 20
+    },
+    imageBoxStyle: {
+        flexDirection: 'row',
+        justifyContent: 'center',
+        marginVertical: 10,
+        width: width,
+        height: (width * 0.6) * 3 / 4,
+        marginBottom: 10
+    },
+    imageStyle: {
+        width: '100%',
+        height: '100%'
     }
 })

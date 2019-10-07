@@ -4,7 +4,7 @@ import { BaseScreen } from '../base';
 import { Header } from '../../components/base';
 import { TopicCourseItem, CategoryItem, HomeCarousel } from '../../components/home';
 import { TextForm } from '../../components/form';
-import { COURSE_SCREEN } from '../../constants/NavigatorConstants';
+import { COURSE_SCREEN, ENGLISH_SCREEN } from '../../constants/NavigatorConstants';
 import { FONT_MD } from '../../constants/FontConstants';
 import { connect } from 'react-redux';
 import * as categoryActions from '../../redux/actions/CategoryActions';
@@ -19,12 +19,27 @@ class HomeScreen extends Component {
         this.props.getAllCategory();
     }
 
-    _onGoToCourseScreen = (topicId, title, image) => {
-        this.props.navigation.navigate(COURSE_SCREEN, {
-            title,
-            topicId,
-            image
-        });
+    _onGoToCourseScreen = (topic) => {
+        switch (topic.type) {
+            case "english":
+                this.props.navigation.navigate(ENGLISH_SCREEN, {
+                    title: topic.name,
+                    id: topic.id,
+                    image: topic.image
+                });
+                break;
+            case "frontend":
+            case "backend":
+            case "mobile":
+                this.props.navigation.navigate(COURSE_SCREEN, {
+                    title: topic.name,
+                    topicId: topic.id,
+                    image: topic.image
+                });
+                break;
+            default:
+                break;
+        }
     }
 
     render() {

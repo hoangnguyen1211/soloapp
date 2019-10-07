@@ -11,7 +11,7 @@ export default TopicCourseItem = (props) => {
 
     return (
         <TouchableOpacity style={styles.containerStyle}
-            onPress={() => funcGoToCourseScreen(topic.id, topic.name, topic.image)}>
+            onPress={() => funcGoToCourseScreen(topic)}>
             <ImageBackground
                 source={{ uri: topic.image }}
                 style={styles.wrapperStyle}

@@ -5,11 +5,13 @@ import {
     LessonScreen
 } from '../screens/home';
 import QuestionNavigator from './QuestionNavigator';
+import EnglishNavigator from './EnglishNavigation';
 const HomeNavigator = createStackNavigator({
     HomeScreen,
     CourseScreen,
     LessonScreen,
-    QuestionNavigator
+    QuestionNavigator,
+    EnglishNavigator
 },
 {
     headerMode: 'none',
